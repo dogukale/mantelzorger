@@ -1,0 +1,306 @@
+/*
+|--------------------------------------------------------------------------
+| CSS Reset
+|--------------------------------------------------------------------------
+*/
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Huizen Kaarten in Grid
+|--------------------------------------------------------------------------
+*/
+
+.gridCard {
+    grid-column: span 4;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+    border-radius: .5rem;
+}
+@media(max-width: 56.25rem) {
+    .gridCard {
+        grid-column: span 6;
+    }
+}
+@media(max-width: 32.5rem) {
+    .gridCard {
+        grid-column: span 12;
+    }
+}
+
+.gridCard article {
+    width: 100%;
+    height: 100%;
+}
+
+.gridCard__figure {
+    width: 100%;
+    height: 60%;
+}
+.gridCard__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.gridCard__header {
+    height: 20%;
+}
+
+.gridCard__heading {
+    font-size: 110%;
+    color: black;
+}
+
+.gridCard__text {
+    color: black;
+}
+
+.gridCard__button {
+    font-size: 100%;
+    width: 100%;
+    padding: .5rem;
+    background: #07689f;
+    color: white;
+    box-shadow: 0 0 5rem rgba(7, 104, 159, 0.7);
+    transition: 0.2s all;
+}
+
+/* Style for alarm */
+.gridCard::after {
+    content: "";
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+}
+.gridCard[data-alarm=true]::after {
+    background: red;
+}
+.gridCard[data-alarm=false]::after {
+    background: #32CD32;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Huis Kaart
+|--------------------------------------------------------------------------
+*/
+
+.houseCard {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.5rem 1rem black;
+    position: relative;
+}
+.houseCard::after {
+    content: "";
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(7, 104, 159, 0.3);
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+}
+@media(max-width: 87.5rem) {
+    .houseCard {
+        width: 70%;
+    }
+}
+@media(max-width: 31.5rem) {
+    .houseCard {
+        width: 100%;
+    }
+}
+
+.houseCard__figure {
+    width: 100%;
+    height: 100%;
+}
+
+.houseCard__image {
+    width: 100%;
+    height: 20%;
+    object-fit: cover;
+}
+
+.houseCard__header {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.houseCard__textSection {
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    text-align: center;
+}
+
+.houseCard__back_to_home {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: black;
+}
+
+.houseCard__sensor-beveiliging {
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 2rem;
+}
+@media(max-width: 62.5rem) {
+    .houseCard__sensor-beveiliging {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.houseCard__sensor {
+    width: 20rem;
+    background: rgba(7, 104, 159, 0.3);
+    box-shadow: 0 0.5rem 2rem black;
+    padding: 0 1rem;
+}
+.houseCard__sensor[data-sensor=true] {
+    background: red;
+    color: white;
+}
+@media(max-width: 62.5rem) {
+    .houseCard__sensor {
+        width: 25rem;
+    }
+}
+@media(max-width: 37.5rem) {
+    .houseCard__sensor {
+        width: 15rem;
+    }
+}
+
+.houseCard__beveiliging {
+    width: 20rem;
+    background: rgba(7, 104, 159, 0.3);
+    box-shadow: 0 0.5rem 1rem black;
+    padding: 0 1rem;
+}
+@media(max-width: 62.5rem) {
+    .houseCard__beveiliging {
+        width: 25rem;
+    }
+}
+@media(max-width: 37.5rem) {
+    .houseCard__beveiliging {
+        width: 15rem;
+    }
+}
+
+.houseCard__heading {
+    padding: 1rem 0;
+}
+
+.houseCard__sensorFlex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.houseCard__paragraph {
+    font-size: 1.2rem;
+    padding: .5rem 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Utility Classes
+|--------------------------------------------------------------------------
+*/
+
+.u-list-style-none {
+    list-style: none;
+}
+
+.u-grid-gap-2 {
+    gap: 2rem;
+}
+
+.u-grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    max-width: 80rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin: 0 auto;
+}
+@media (min-width: 40rem) {
+    .u-grid-12 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+@media (min-width: 64rem) {
+    .u-grid-12 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.u-flex-v-center {
+    display: flex;
+    align-items: center;
+}
+
+.u-flex-h-center {
+    display: flex;
+    justify-content: center;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Animations
+|--------------------------------------------------------------------------
+*/
+
+.a-popup {
+    animation-name: popup;
+    animation-duration: 0.8s;
+    animation-fill-mode: backwards;
+}
+.a-popup:nth-of-type(2n) {
+    animation-delay: 0.1s;
+}
+.a-popup:nth-of-type(3n) {
+    animation-delay: 0.2s;
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(1.05) translateY(2rem);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
